@@ -1,24 +1,34 @@
 import { Button, Row, Col, Card, Nav } from 'react-bootstrap';
+import { BotaoCartaoLead } from './BotaoCartaoLead';
 
-export function CartaoLead() {
+export const CartaoLead = ({ cartao }) => {
     return (
         <Row xs={1} md={2} className="g-4">
-            {Array.from({ length: 4 }).map((_, idx) => (
-                <Col>
-                    <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a longer card with supporting text below as a natural
-                                lead-in to additional content. This content is a little bit longer.
-                            </Card.Text>
-                            <Button as={Col} variant="primary">Accepted</Button>
-                            <Button as={Col} variant="secondary">Decline</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            ))}
+            <Col>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>{cartao.fullName}</Card.Title>
+                        <hr />
+                        <Card.Text>
+                            {cartao.suburb} | {cartao.category}
+
+                           
+
+                        </Card.Text>
+
+                        <Card.Text>
+                            {cartao.description}
+                        </Card.Text>
+
+                        <hr />
+
+                            <BotaoCartaoLead cartao={cartao.id}/>
+
+                            <p>{cartao.price}</p>
+
+                    </Card.Body>
+                </Card>
+            </Col>
         </Row>
     )
 }
