@@ -1,17 +1,18 @@
 import { Button, Row, Col, Card, Nav } from 'react-bootstrap';
-import api from '../api/Api'; 
+import api from '../api/Api';
+ 
 
 export const BotaoCartaoLead = ({cartao}) => {
 
     async function onUpdateCartaoAccepted (value)  {
         
-        await api.put(`/api/CartaoLead/${value}?value=true`)
+        await api.put(`/api/CartaoLead/${value}?value=1`)
        
       };
 
       async function onHandleDecline (value) {
 
-        await api.put(`/api/CartaoLead/${value}?value=false`)
+        await api.put(`/api/CartaoLead/${value}?value=2`)
       };
 
     return(

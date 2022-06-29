@@ -25,7 +25,7 @@ function App() {
 
     getCartao()
 
-  },[])
+  }, [])
 
   const toggleClass = () => {
     setActive(!isActive);
@@ -48,11 +48,15 @@ function App() {
           </Card.Header>
           <Card.Body>
 
-            {cartoes.map(cartao => (
+            <Row className="mx-0">
+              {cartoes.map(cartao => (
 
-              <CartaoLead key={cartao.id} cartao={cartao} />
-            )
-            )}
+                <CartaoLead key={cartao.id} cartao={cartao} />
+              )
+              )}
+            </Row>
+
+
 
           </Card.Body>
 
