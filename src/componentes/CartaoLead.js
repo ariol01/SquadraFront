@@ -5,8 +5,9 @@ export const CartaoLead = ({ cartao }) => {
     return (
         <Row>
             <Col>
-                <Card>
+                <Card Classname="Cartao">
                     <Card.Body>
+                    <Card.Header></Card.Header>
                         <Card.Title>{cartao.fullName}</Card.Title>
                         <hr />
                         <Card.Text>
