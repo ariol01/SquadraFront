@@ -3,7 +3,7 @@ import { BotaoCartaoLead } from './BotaoCartaoLead';
 
 export const CartaoLead = ({ cartao }) => {
     return (
-        <Row xs={1} md={2} className="g-4">
+        <Row>
             <Col>
                 <Card>
                     <Card.Body>
@@ -11,8 +11,6 @@ export const CartaoLead = ({ cartao }) => {
                         <hr />
                         <Card.Text>
                             {cartao.suburb} | {cartao.category}
-
-                           
 
                         </Card.Text>
 
@@ -22,7 +20,7 @@ export const CartaoLead = ({ cartao }) => {
 
                         <hr />
 
-                            <BotaoCartaoLead cartao={cartao.id}/>
+                            <BotaoCartaoLead cartao={cartao}/>
 
                             <p>{cartao.price}</p>
 
