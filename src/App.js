@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Button, Row, Col, Card, Nav } from 'react-bootstrap';
+import { Button, Row, Col, Card, Nav,} from 'react-bootstrap';
 import { CartaoLead } from './componentes/CartaoLead';
 import React, { useState, useEffect, useContext } from "react";
 import api from './api/Api';
@@ -14,18 +14,18 @@ function App() {
 
     async function getCartaoAccepted() {
     let { data } = await api.get('/api/CartaoLead/1')
-
+   
     console.log(data)
-
-    setCartoes(data)
+ 
+   
   }
   
   async function getCartaoInvited() {
     let { data } = await api.get('/api/CartaoLead/0')
 
     console.log(data)
-
     setCartoes(data)
+    
   }
 
   return (
@@ -46,7 +46,8 @@ function App() {
             {cartoes && cartoes.map(cartao => {
               if(cartao.status == 0) {
                 return <CartaoLead key={cartao.id} cartao={cartao} />
-              } else if (cartao.status == 1) {
+              } 
+              if (cartao.status == 1) {
                 return <CartaoLeadAccepted key={cartao.id} cartao={cartao} />
               }
             })}

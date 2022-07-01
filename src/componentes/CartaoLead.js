@@ -1,31 +1,44 @@
 import { Button, Row, Col, Card, Nav } from 'react-bootstrap';
 import { BotaoCartaoLead } from './BotaoCartaoLead';
+import Avatar from '@mui/material/Avatar';
+import CardHeader from '@mui/material/CardHeader';
+import { red } from '@mui/material/colors';
+import { MapOutlined, Work } from '@mui/icons-material';
+
 
 export const CartaoLead = ({ cartao }) => {
+    const dataFormatada = new Date(cartao.dateCreated)
+     dataFormatada.toLocaleDateString();
+
     return (
         <Row>
             <Col>
-                <Card Classname="Cartao">
+                <Card className="Cartao">
                     <Card.Body>
-                    <Card.Header></Card.Header>
-                        <Card.Title>{cartao.fullName}</Card.Title>
+                    <CardHeader
+                            avatar={
+                                <Avatar  sx={{ bgcolor: red[500] }} />                                 
+                                
+                            }
+                            title={cartao.firstName}
+                            subheader={cartao.dateCreated}
+                        />                        
                         <hr />
                         <Card.Text>
-                            {cartao.suburb} | {cartao.category}
-
+                            <MapOutlined/>
+                            {cartao.suburb} | <Work/> {cartao.category} | ID: {cartao.id}
                         </Card.Text>
-
+                        <hr />
+                        
                         <Card.Text>
                             {cartao.description}
                         </Card.Text>
 
                         <hr />
 
-                            <BotaoCartaoLead cartao={cartao}/>
-
-                            <p>{cartao.price}</p>
-
+                            <BotaoCartaoLead cartao={cartao}/>                    
                     </Card.Body>
+
                 </Card>
             </Col>
         </Row>

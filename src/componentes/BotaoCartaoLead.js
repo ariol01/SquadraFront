@@ -1,33 +1,35 @@
 import { Button, Row, Col, Card, Nav } from 'react-bootstrap';
-import api from '../api/Api'; 
+import api from '../api/Api';
 import { useState, useEffect } from "react";
 import { useCardContext } from '../hooks/CardContext';
+import { AttachMoney } from '@mui/icons-material';
 
-export const BotaoCartaoLead = ({cartao}) => {
+export const BotaoCartaoLead = ({ cartao }) => {
 
-  const {cartoes, setCartoes} = useCardContext()
+  const { cartoes, setCartoes } = useCardContext()
 
-    async function onUpdateAccepted (value)  {
-        
-        await api.put(`/api/CartaoLead/${value}?value=1`)
-        
-      };
+  async function onUpdateAccepted(value) {
 
-      async function onUpdateDecline (value) {
+    await api.put(`/api/CartaoLead/${value}?value=1`)
+  };
 
-       let response =  await api.put(`/api/CartaoLead/${value}?value=2`)
-        setCartoes(response.data)
-      };
+  async function onUpdateDecline(value) {
 
-      useEffect(() => {
-        // Atualiza o título do documento usando a API do browser
-         
-      });
+    let response = await api.put(`/api/CartaoLead/${value}?value=2`)
+    setCartoes(response.data)
+  };
 
-    return(
-        <Row className="mx-0">
-        <Button as={Col} variant="primary" onClick={()=>onUpdateAccepted(cartao.id)}>Accepted</Button>
-        <Button as={Col} variant="secondary" onClick={()=>onUpdateDecline(cartao.id)}>Decline</Button>
-    </Row>
-    )
+  useEffect(() => {
+    // Atualiza o título do documento usando a API do browser
+
+  });
+
+  return (
+    <div className="mb-2">
+      <Button as={Col} variant="primary" onClick={() => onUpdateAccepted(cartao.id)}>Accepted</Button>{' '}
+      <Button as={Col} variant="secondary" onClick={() => onUpdateDecline(cartao.id)}>Decline</Button>{' '}{' '} <AttachMoney/>{cartao.price}
+    </div>
+
+
+  )
 }
